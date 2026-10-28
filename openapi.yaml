@@ -1,0 +1,47 @@
+openapi: 3.0.1
+info:
+  title: Auditor Comercial 360 - Otagira Tech
+  description: API gratuita para auditar el posicionamiento en Google Maps, calcular pérdidas financieras y ofrecer soluciones de automatización con IA por Otagira Tech.
+  version: 'v1'
+servers:
+  - url: https://github.io
+paths:
+  /auditar-negocio:
+    post:
+      operationId: ejecutarAuditoria360
+      summary: Analiza el SEO local, procesos operativos y calcula pérdidas financieras estimadas del negocio.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre_negocio:
+                  type: string
+                  description: El nombre comercial de la empresa.
+                nicho_mercado:
+                  type: string
+                  description: El sector o categoría del negocio (ej. barbería, clínica dental, cerrajero).
+                ciudad_operacion:
+                  type: string
+                  description: La ciudad y país donde se encuentra el negocio físico.
+                proceso_actual:
+                  type: string
+                  description: Cómo atienden a sus clientes actualmente (ej. por WhatsApp manual, anotan en cuaderno, llamadas telefónicas).
+              required:
+                - nombre_negocio
+                - nicho_mercado
+                - ciudad_operacion
+                - proceso_actual
+      responses:
+        '200':
+          description: Auditoría comercial generada con éxito.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reporte_auditoria:
+                    type: string
+                    description: El reporte final de Otagira Tech que detalla el SEO Local, los cuellos de botella, la matemática de pérdidas de dinero y las soluciones comerciales con IA recomendadas.
